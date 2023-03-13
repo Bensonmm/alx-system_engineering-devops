@@ -1,3 +1,2 @@
 #!/bin/bash
-head -n 10 /etc/passwd
-0x02-shell_redirections
+head -n 10 /etc/password
