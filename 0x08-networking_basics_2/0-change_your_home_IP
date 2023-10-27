@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Configures an Ubuntu server as follows:
+#   - localhost resolves to 127.0.0.2
+#   - facebook.com resolves to 8.8.8.8
+
+#!/bin/bash
+
+# Check if the script is run as root
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root (sudo)."
+    exit 1
+fi
+
+# Define the original IP addresses
+original_localhost="127.0.0.1"
+original_facebook="157.240.11.35"
+
+# New IP addresses
+new_localhost="127.0.0.2"
+new_facebook="8.8.8.8"
+
+# Function to update /etc/hosts
+update_hosts() {
+    sed -i "s/$1 $2/$3 $2/g" /etc/hosts
+}
+
+# Display current settings
+echo "Current settings:"
+echo "localhost resolves to $(grep "localhost" /etc/hosts | awk '{print $1}')"
+echo "facebook.com resolves to $(grep "facebook.com" /etc/hosts | awk '{print $1}')"
+echo
+
+# Prompt user to continue
+read -p "Do you want to change the IP addresses for localhost and facebook.com? (y/n): " choice
+
+if [ "$choice" == "y" ]; then
+    # Update /etc/hosts with new IP addresses
+    update_hosts $original_localhost "localhost" $new_localhost
+    update_hosts $original_facebook "facebook.com" $new_facebook
+
+    echo "IP addresses updated successfully!"
+    echo
+
+    # Display updated settings
+    echo "Updated settings:"
+    echo "localhost now resolves to $(grep "localhost" /etc/hosts | awk '{print $1}')"
+    echo "facebook.com now resolves to $(grep "facebook.com" /etc/hosts | awk '{print $1}')"
+else
+    echo "No changes were made. Exiting."
+fi
+
