@@ -1,1 +1,0 @@
-Shellcheck Project
