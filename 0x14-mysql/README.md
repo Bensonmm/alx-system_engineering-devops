@@ -48,7 +48,7 @@ The MySQL server provides a database management system with querying and connect
 - Then do the following
 
 ```bash
-$ sudo apt-key add name_of_file.key
+$ sudo apt-key add mysql 5.7
 OK
 
 # adding it to the apt repo
@@ -74,7 +74,8 @@ mysql-server:
 
 # Now am installing mysql 5.7.*
 $ sudo apt-get install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7* -y
-```
+
+
 ## Project Task
 
 ### Creating a user and Granting Priviledges in mysql
