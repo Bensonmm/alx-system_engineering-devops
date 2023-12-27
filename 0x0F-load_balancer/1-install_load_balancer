@@ -17,8 +17,8 @@ frontend  Bensonmm_frontend
         default_backend Bensonmm_backend
 backend Bensonmm_backend
         balance roundrobin
-        server328324-web-01 3.84.239.207:80 check
-        server328324-web-02 54.224.26.56:80 check
+        server 328324-web-01 3.84.239.207:80 check
+        server 328324-web-02 54.224.26.56:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
