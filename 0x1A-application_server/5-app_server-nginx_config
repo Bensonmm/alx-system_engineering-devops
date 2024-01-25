@@ -1,7 +1,7 @@
 server {
 	listen 80 default_server;
 	listen [::]:80 ipv6only=on default_server;
-	server_name localhost 35.231.33.237;
+	server_name localhost 3.84.239.207;
 
 	root /home/ubuntu/AirBnB_clone_v4/web_dynamic;
 
