@@ -17,7 +17,7 @@ def number_of_subscribers(subreddit):
 
         "Check if the request was successful (status code 200)"
         if response.status_code == 200:
-            '' Parse the JSON response"
+            "Parse the JSON response"
             subreddit_info = response.json()
 
             "Extract and return the number of subscribers"
