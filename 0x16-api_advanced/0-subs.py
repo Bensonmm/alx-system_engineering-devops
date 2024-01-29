@@ -4,32 +4,32 @@
 import requests
 
 def number_of_subscribers(subreddit):
-    '''Reddit API URL for getting subreddit information'''
+    # Reddit API URL for getting subreddit information
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
     
-    "Set a custom User-Agent to avoid Too Many Requests error"
+    # Set a custom User-Agent to avoid Too Many Requests error
     headers = {'User-Agent': 'by /u/bensonmm'}
 
     try:
-        "Make a GET request to the Reddit API"
+        # Make a GET request to the Reddit API
         response = requests.get(url, headers=headers)
 
-        "Check if the request was successful (status code 200)"
+        # Check if the request was successful (status code 200)
         if response.status_code == 200:
-            "Parse the JSON response"
+            # Parse the JSON response
             subreddit_info = response.json()
 
-            "Extract and return the number of subscribers"
+            # Extract and return the number of subscribers
             return subreddit_info['data']['subscribers']
         elif response.status_code == 404:
-            "If subreddit is not found, return 0"
-            return (0)
+            # If subreddit is not found, return 0
+            return 0
         else:
-            "If there's an error, print the status code and return 0"
+            # If there's an error, print the status code and return 0
             print(f"Error: {response.status_code}")
-            return (0)
+            return 0
     except Exception as e:
-        "Print the exception and return 0"
+        # Print the exception and return 0
         print(f"Exception: {e}")
-        return (0)
+        return 0
 
