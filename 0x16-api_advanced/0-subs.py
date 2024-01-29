@@ -2,7 +2,7 @@
 """Function to query subscribers on a given Reddit subreddit."""
 
 import requests
-
+import sys
 
 def number_of_subscribers(subreddit):
     '''Reddit API URL for getting subreddit information'''
