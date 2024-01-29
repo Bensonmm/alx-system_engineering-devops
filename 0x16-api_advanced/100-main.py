@@ -4,10 +4,18 @@
 """
 import sys
 
-if __name__ == '__main__':
-    count_words = __import__('100-count').count_words
-    if len(sys.argv) < 3:
-        print("Usage: {} <subreddit> <list of keywords>".format(sys.argv[0]))
-        print("Ex: {} programming 'python java javascript'".format(sys.argv[0]))
+if __name__ == "__main__":
+    "Check if the correct number of command-line arguments is provided"
+    if len(sys.argv) != 2:
+        print("Usage: python script_name.py subreddit_name")
+        sys.exit(1)
+
+    "Get subreddit name from command-line arguments"
+    subreddit_name = sys.argv[1]
+
+    "Call the function and print the result"
+    subscribers_count = number_of_subscribers(subreddit_name)
+    if subscribers_count > 0:
+        print(f"The subreddit /r/{subreddit_name} has {subscribers_count} subscribers.")
     else:
-        result = count_words(sys.argv[1], [x for x in sys.argv[2].split()])
+        print(f"The subreddit /r/{subreddit_name} is not valid or doesn't exist.")
