@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Gracefully reload Gunicorn
+pgrep gunicorn | xargs kill -mup
+
+# Wait for a short period to allow Gunicorn to gracefully shut down
+sleep 5
+
+# Check if Gunicorn is still running
+if pgrep -x gunicorn > /dev/null; then
+    echo "Gunicorn did not terminate gracefully. Consider checking and restarting manually."
+else
+    echo "Gunicorn has been gracefully reloaded."
+fi
