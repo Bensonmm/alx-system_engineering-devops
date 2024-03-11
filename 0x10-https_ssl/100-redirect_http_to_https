@@ -44,7 +44,7 @@ frontend Bensonmm_front_end
     backend Bensonmm_back_end
     balance roundrobin
     
-    server 328324-web-01 54.90.28.71:80 check
+    server 328324-web-01 18.204.10.70 check
     server 328324-web-02 54.224.26.56:80  check
 
 backend letsencrypt-backend
